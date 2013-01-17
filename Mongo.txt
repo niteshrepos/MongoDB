@@ -1,0 +1,105 @@
+install --> 
+
+	data->db
+
+terms --> 
+
+	database -- > same 
+	table --> collection 
+	record -- > document 
+	field -- > column 
+
+base command -->
+
+	insert()
+	save()
+	find()
+
+Id -- >
+	
+	_id: can be defined
+	_id: is a object and has method of getTimestamp()
+	new ObjectId : will get new object Id
+
+relating docs -->
+	
+	- just put the id of one object to another
+	- if you are just reading do denormalize as much as possible
+	-   	
+
+query -- >
+	we can use regx instead of values	
+	- find({key : value}) works with array too and	return cursor
+	- findOne : return object 
+	- find({}, {title: 1, url: 1, _id: 0})
+	- findOne("name.first": "nitesh", {name.last: 1}) : for objects 
+
+operators -- >
+
+	 (if we don't know the value)
+	
+	-find({key: {$gt : 100, $lt: 200}})
+	-$gt/$gte
+	-$lt/$lte
+	-$in: ["nitesh", "sanjeev"] / $nin --> or
+	-$all : ["tag1", "tag2"] --> and 
+	-----
+
+	-$regx
+	-$ne : "" --> not equal 
+	-$or/$nor 
+	-$and/$nand
+	-$exist
+	-$not
+	-$elemMatch
+	-$where : '', '' (we can even use without where)
+
+
+
+useful filter Method -->
+	
+	count()
+	sort({title:1, fav:1 }) /-1
+	limit(2)
+	skip(3)
+
+update document -- >
+	
+	.update ({ name : "nitesh"}, {job :"dev"}) //replacement 
+	.update ({ name : "nitesh"}, {name: "nitesh", job :"dev"}, true) //upsert
+
+	.update(q, ($set : {email: "nit"})) //modification
+	$inc
+	$set
+	$unset
+
+	to update multiple documents make 4th para true
+	.update(q, {} , false, true)
+
+	.findaAndModify({
+		query : ,
+		update : ,
+		new : , 
+		sort : ,
+
+	})
+
+	$push
+	$pushAll
+	$addToSet
+			--each
+
+	$pull
+	$pullAll
+
+	$pop : 1/-1		
+
+others : 
+-distinct("favourite")
+-group
+
+
+
+	
+
+	
